@@ -135,6 +135,8 @@ This repository contains a PoC that exploits this vulnerability to perform the f
 
 - Send a ROP payload that is stored in the remote console stack. Part of the payload is used to overwrite the return address of the function, making the game execute it immediately. The PoC only implements sending payloads of 0x9C bytes.
 
+**NOTE:** The PoC requires an old version of NintendoClients that implements PIA communications
+
 ## Credits
 While this vulnerability was discovered by multiple users independently, many of them decided to keep the vulnerability information private. However, the folowing people are responsible for safely disclosing the vulnerability to Nintendo:
 - PabloMK7 ([GitHub](https://github.com/PabloMK7), [Twitter](https://twitter.com/Pablomf6))
