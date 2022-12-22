@@ -4,15 +4,15 @@
 <img width="320" height="168" src="https://github.com/PabloMK7/ENLBufferPwn/blob/main/images/enlbufferpwn_logo.png?raw=true">
 </p>
 
-- [ENLBufferPwn (*CVE ID Pending*)](#enlbufferpwn---cve-id-pending--)
-  * [Description](#description)
-  * [Vulnerability details](#vulnerability-details)
-  * [ENLBufferPwn in Mario Kart 7 (3DS)](#enlbufferpwn-in-mario-kart-7--3ds-)
-    + [Technical details](#technical-details)
-  * [ENLBufferPwn in Mario Kart 8 (Wii U)](#enlbufferpwn-in-mario-kart-8--wii-u-)
-    + [Technical details](#technical-details-1)
-  * [Credits](#credits)
-  * [License](#license)
+## Table of contents
+* [Description](#description)
+* [Vulnerability details](#vulnerability-details)
+* [ENLBufferPwn in Mario Kart 7 (3DS)](#enlbufferpwn-in-mario-kart-7--3ds-)
+  + [Technical details](#technical-details)
+* [ENLBufferPwn in Mario Kart 8 (Wii U)](#enlbufferpwn-in-mario-kart-8--wii-u-)
+  + [Technical details](#technical-details-1)
+* [Credits](#credits)
+* [License](#license)
 
 ## Description
 
