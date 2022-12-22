@@ -16,11 +16,13 @@
 
 ## Description
 
-| Name: | ENLBufferPwn |
-| CVE: | *Pending* |
-| Authors: | [PabloMK7](https://github.com/PabloMK7), [Rambo6Glaz](https://github.com/Rambo6Glaz), [Fishguy6564](https://github.com/fishguy6564) |
-| Reported: | August 8th, 2021 (Mario Kart 7) <br> April 14th, 2022 (Mario Kart 8) |
-| Disclosed: | December 22nd, 2022 |
+|            |                                                                                                                                     |
+|------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| Name:      | ENLBufferPwn                                                                                                                        |
+| CVE:       | *Pending*                                                                                                                           |
+| Authors:   | [PabloMK7](https://github.com/PabloMK7), [Rambo6Glaz](https://github.com/Rambo6Glaz), [Fishguy6564](https://github.com/fishguy6564) |
+| Reported:  | August 8th, 2021 (Mario Kart 7) <br> April 14th, 2022 (Mario Kart 8)                                                                |
+| Disclosed: | December 22nd, 2022                                                                                                                 |
 
 **ENLBufferPwn** is a vulnerability in the common network code of several first party Nintendo games since the Nintendo 3DS that allows an attacker to execute code remotely in the victim's console by just having an online game with them (remote code execution). It was dicovered by multiple people independently during 2021 and reported to Nintendo during 2022. Since the initial report, Nintendo has patched the vulnerability in many vulnerable games. The information in this repository has been safely disclosed after getting permission from Nintendo.
 
