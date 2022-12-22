@@ -4,17 +4,29 @@
 <img width="320" height="168" src="https://github.com/PabloMK7/ENLBufferPwn/blob/main/images/enlbufferpwn_logo.png?raw=true">
 </p>
 
+- [ENLBufferPwn (*CVE ID Pending*)](#enlbufferpwn---cve-id-pending--)
+  * [Description](#description)
+  * [Vulnerability details](#vulnerability-details)
+  * [ENLBufferPwn in Mario Kart 7 (3DS)](#enlbufferpwn-in-mario-kart-7--3ds-)
+    + [Technical details](#technical-details)
+  * [ENLBufferPwn in Mario Kart 8 (Wii U)](#enlbufferpwn-in-mario-kart-8--wii-u-)
+    + [Technical details](#technical-details-1)
+  * [Credits](#credits)
+  * [License](#license)
+
+## Description
+
 **ENLBufferPwn** is a vulnerability in the common network code of several first party Nintendo games since the Nintendo 3DS that allows an attacker to execute code remotely in the victim's console by just having an online game with them (remote code execution). It was dicovered by multiple people independently during 2021 and reported to Nintendo during 2022. Since the initial report, Nintendo has patched the vulnerability in many vulnerable games. The information in this repository has been safely disclosed after getting permission from Nintendo.
 
 The vulnerability has scored a **[9.8/10 (Critical)](https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)** in the CVSS 3.1 calculator.
 
 Here is a list of games that are known to have had the vulnerability at some point (all the Switch and 3DS games listed have received updates that patch the vulnerability, so they are no longer affected):
 - Mario Kart 7 (fixed in v1.2)
-- Mario Kart 8 (still not patched)
+- Mario Kart 8 (still not fixed)
 - Mario Kart 8 Deluxe (fixed in v2.1.0)
 - Animal Crossing: New Horizons (fixed in v2.0.6)
 - ARMS (fixed in v5.4.1)
-- Splatoon (still not patched)
+- Splatoon (still not fixed)
 - Splatoon 2 (fixed in v5.5.1)
 - Splatoon 3 (fixed in late 2022, exact version unknown)
 - Super Mario Maker 2 (fixed in v3.0.2)
@@ -26,7 +38,7 @@ The **ENLBufferPwn** vulnerability exploits a buffer overflow in the C++ class `
 
 The rest of the report will focus on Mario Kart 7, as due to the lack of security measures (ASLR, for example) of the 3DS, it is the most severe case of the vulnerability. However, it may be possible to bypass ASLR on Switch games by hijacking the `NetworkBuffer` used to send data back to the attacker (and making it leak pointers to the heap and code).
 
-## ENLBufferPwn in Mario Kart 7
+## ENLBufferPwn in Mario Kart 7 (3DS)
 The following video showcases a severe case of the vulnerability in Mario Kart 7, where a console controlled by an attacker (left side) fully takes over an unmodified console (right side). The only interaction done by the user is joining an online game session with the attacker, in this case, using the "communities" feature (note that a "community" was used to safely test the vulnerability in an isolated manner and not affect any other users playing in public lobbies). The takeover is done by copying a ROP payload to the remote console and then executing it. This ROP payload then uses other vulnerabilities in the OS to escalate privileges and get total control. In the video, the remote console is forced to run a CFW installer (`SafeB9SInstaller`). Using the same tchniques, it would be theoretically possible to **steal account/credit card information** or **take unauthorized audio/video recordings using the console built-in mic/cameras**.
 
 [![ENLBufferPwn - Mario Kart 7 Demonstration - Youtube](https://img.youtube.com/vi/PLAVmp5ky-k/0.jpg)](https://www.youtube.com/watch?v=PLAVmp5ky-k)
@@ -86,6 +98,19 @@ This repository contains a PoC that exploits this vulnerability to perform the f
 Keep in mind that this PoC does not implement any kind of packet drop detection, as communications between consoles are done using UDP. To obtain the best results, packet drop handling should be implemented in the PoC code or the consoles should be placed in the same network to reduce the chances of packets dropping.
 
 A possible fix of the vulnerable `NetworkBuffer` class is [also provided](Mario_Kart_7_PoC/Includes/MK7NetworkBuffer.hpp).
+
+## ENLBufferPwn in Mario Kart 8 (Wii U)
+The following video showcases a severe case of the vulnerability in Mario Kart 8 for the Wii U, where code that prints a custom message is executed remotely on a Wii U console (in the background) by making it connect to a simulated player via a PC utility (bottom right corner). The only interaction done by the user is joining an online game session with the attacker, in this case, using the "friends" feature (note that a "friend room" was used to safely test the vulnerability in an isolated manner and not affect any other users playing in public lobbies). Remote code execution is achieved the same way as in Mario Kart 7: A ROP payload is sent to the remote console and then executed by overwriting the stack. While this video doesn't showcase full console takeover, it is possible to combine the ROP payload with other vulnerabilities to achieve it.
+
+[![ENLBufferPwn - Mario Kart 8 Demonstration - Youtube](https://img.youtube.com/vi/6Z7jSUimmuc/0.jpg)](https://www.youtube.com/watch?v=6Z7jSUimmuc)
+
+### Technical details
+
+All the details explained in the section [ENLBufferPwn in Mario Kart 7 (3DS)](#enlbufferpwn-in-mario-kart-7--3ds-) apply to Mario Kart 8 as well. The only notable difference is the implementation of the `NetworkBuffer` class, which has a few extra attributes. However, none of the differences affect how the vulnerability works.
+
+This repository contains a PoC that exploits this vulnerability to perform the following operations:
+
+- Send a ROP payload that is stored in the remote console stack. Part of the payload is used to overwrite the return address of the function, making the game execute it immediately. The PoC only implements sending payloads of 0x9C bytes.
 
 ## Credits
 While this vulnerability was discovered by multiple users independently, many of them decided to keep the vulnerability information private. However, the folowing people are responsible for safely disclosing the vulnerability to Nintendo:
