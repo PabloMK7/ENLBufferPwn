@@ -66,7 +66,7 @@ Another detail of the network library is that it is asynchronous, so that games 
 
 For this PoC, we will be exploiting the double `NetworkBuffer` used to receive Mii data (`bufferType = 9`). Due to the order of heap allocation, it just happens that the `NetworkBuffer` object and its contents are placed next to each other. Also, both buffers from the double buffer are contigous in memory. The following diagram represents how the memory looks after the buffer allocation:
 
-[![Representation of the mii data double NetworBuffer in the game's heap](images/memory_layout.png)]
+![Representation of the mii data double NetworBuffer in the game's heap](images/memory_layout.png)
 
 From now on, the buffer in the top of the image will be references as `Buffer0`, while the buffer in the bottom will be `Buffer1`. Using this knowledge, an attacker can trigger the buffer overflow in `Buffer0` to overwrite the attributes of `Buffer1`, including its `dataPtr` member. Since 3DS games do not implement ASLR, all the memory locations in the remote console are known, so `dataPtr` can be pointed to an arbitrary location. Once the game swaps the buffer, the new data will be copied to the arbitrary location. Doing the following steps, a payload of any size can be copied to the remote console:
 
@@ -76,7 +76,7 @@ From now on, the buffer in the top of the image will be references as `Buffer0`,
 
 Below is an animation of the normal operation of the game, followed by performing the steps described above.
 
-[![Animation of the normal operation of the double buffers, followed by vulnerability operation](images/exploit_operation.gif)]
+![Animation of the normal operation of the double buffers, followed by vulnerability operation](images/exploit_operation.gif)
 
 This repository contains a PoC that exploits this vulnerability to perform the following operations, depending on the compiler flags:
 
