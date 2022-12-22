@@ -10,6 +10,10 @@
 <td><i>Pending</i></td>
 </tr>
 <tr>
+<td>CVSS v3.1:</td>
+<td><a href=https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H>9.8/10 (Critical)</a></td>
+</tr>
+<tr>
 <td>Authors:</td>
 <td><a href=https://github.com/PabloMK7>PabloMK7</a>, <a href=https://github.com/Rambo6Glaz>Rambo6Glaz</a>, <a href=https://github.com/fishguy6564>Fishguy6564</a></td>
 </tr>
@@ -37,7 +41,7 @@
 
 **ENLBufferPwn** is a vulnerability in the common network code of several first party Nintendo games since the Nintendo 3DS that allows an attacker to execute code remotely in the victim's console by just having an online game with them (remote code execution). It was dicovered by multiple people independently during 2021 and reported to Nintendo during 2022. Since the initial report, Nintendo has patched the vulnerability in many vulnerable games. The information in this repository has been safely disclosed after getting permission from Nintendo.
 
-The vulnerability has scored a **[9.8/10 (Critical)](https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H)** in the CVSS 3.1 calculator.
+The vulnerability has scored a [9.8/10 (Critical)](https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H) in the CVSS 3.1 calculator.
 
 Here is a list of games that are known to have had the vulnerability at some point (all the Switch and 3DS games listed have received updates that patch the vulnerability, so they are no longer affected):
 - Mario Kart 7 (fixed in v1.2)
