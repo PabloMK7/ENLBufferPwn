@@ -83,6 +83,8 @@ This repository contains a PoC that exploits this vulnerability to perform the f
 - Send a 4 byte value that is written to the application status address of the remote console, forcing it to close and return to the home menu.
 - Send a ROP payload that is stored in the remote console memory. Once the ROP is sent, the stack is overwritten so that the game executes it (the ROP payload itself is not provided in the PoC).
 
+Keep in mind that this PoC does not implement any kind of packet drop detection, as communications between consoles are done using UDP. To obtain the best results, packet drop handling should be implemented in the PoC code or the consoles should be placed in the same network to reduce the chances of packets dropping.
+
 A possible fix of the vulnerable `NetworkBuffer` class is [also provided](Mario_Kart_7_PoC/Includes/MK7NetworkBuffer.hpp).
 
 ## Credits
