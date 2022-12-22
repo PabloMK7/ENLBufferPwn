@@ -1,0 +1,6 @@
+local
+Build
+.vscode
+*.3gx
+*.code-workspace
+*.lst
