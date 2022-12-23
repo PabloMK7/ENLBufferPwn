@@ -144,4 +144,20 @@ While this vulnerability was discovered by multiple users independently, many of
 - Fishguy6564 ([GitHub](https://github.com/fishguy6564), [Twitter](https://twitter.com/fishguy6564))
 
 ## License
-With the hope the information given in this repository is useful to anyone, we have decided to release the work under the [CC0 / Public Domain](https://creativecommons.org/licenses/publicdomain/) license. However, credits to this repository in your work will be appreciated. ;)
+<p xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#">
+  <a rel="license"
+     href="http://creativecommons.org/publicdomain/zero/1.0/">
+    <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
+  </a>
+  <br />
+  To the extent possible under law,
+  <a rel="dct:publisher"
+     href="https://github.com/PabloMK7/ENLBufferPwn">
+    <span property="dct:title">PabloMK7, Rambo6Glaz and Fishguy6564</span></a>
+  have waived all copyright and related or neighboring rights to
+  <span property="dct:title">ENLBufferPwn</span>.
+This work is published from:
+<span property="vcard:Country" datatype="dct:ISO3166"
+      content="ES" about="https://github.com/PabloMK7/ENLBufferPwn">
+  Spain</span>.
+</p>
