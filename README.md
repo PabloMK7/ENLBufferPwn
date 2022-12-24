@@ -1,4 +1,4 @@
-# ENLBufferPwn (*CVE ID Pending*)
+# ENLBufferPwn (CVE-2022-47949)
 
 <p align="center">
 <img width="320" height="168" src="https://github.com/PabloMK7/ENLBufferPwn/blob/main/images/enlbufferpwn_logo.png?raw=true">
@@ -7,7 +7,7 @@
 <table align="center">
 <tr>
 <td>CVE:</td>
-<td><i>Pending</i></td>
+<td>CVE-2022-47949</td>
 </tr>
 <tr>
 <td>CVSS v3.1:</td>
