@@ -39,7 +39,7 @@
 
 ## Description
 
-**ENLBufferPwn** is a vulnerability in the common network code of several first party Nintendo games since the Nintendo 3DS that allows an attacker to execute code remotely in the victim's console by just having an online game with them (remote code execution). It was dicovered by multiple people independently during 2021 and reported to Nintendo during 2022. Since the initial report, Nintendo has patched the vulnerability in many vulnerable games. The information in this repository has been safely disclosed after getting permission from Nintendo.
+**ENLBufferPwn** is a vulnerability in the common network code of several first party Nintendo games since the Nintendo 3DS that allows an attacker to execute code remotely in the victim's console by just having an online game with them (remote code execution). It was dicovered by multiple people independently during 2021 and reported to Nintendo during 2021 and 2022. Since the initial report, Nintendo has patched the vulnerability in many vulnerable games. The information in this repository has been safely disclosed after getting permission from Nintendo.
 
 The vulnerability has scored a [9.8/10 (Critical)](https://www.first.org/cvss/calculator/3.1#CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H) in the CVSS 3.1 calculator.
 
