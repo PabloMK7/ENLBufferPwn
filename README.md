@@ -45,11 +45,11 @@ The vulnerability has scored a [9.8/10 (Critical)](https://www.first.org/cvss/ca
 
 Here is a list of games that are known to have had the vulnerability at some point (all the Switch and 3DS games listed have received updates that patch the vulnerability, so they are no longer affected):
 - Mario Kart 7 (fixed in v1.2)
-- Mario Kart 8 (still not fixed)
+- Mario Kart 8
 - Mario Kart 8 Deluxe (fixed in v2.1.0)
 - Animal Crossing: New Horizons (fixed in v2.0.6)
 - ARMS (fixed in v5.4.1)
-- Splatoon (still not fixed)
+- Splatoon
 - Splatoon 2 (fixed in v5.5.1)
 - Splatoon 3 (fixed in late 2022, exact version unknown)
 - Super Mario Maker 2 (fixed in v3.0.2)
@@ -121,11 +121,6 @@ This repository contains a PoC that exploits this vulnerability to perform the f
 Keep in mind that this PoC does not implement any kind of packet drop detection, as communications between consoles are done using UDP. To obtain the best results, packet drop handling should be implemented in the PoC code or the consoles should be placed in the same network to reduce the chances of packets dropping.
 
 A possible fix of the vulnerable `NetworkBuffer` class is [also provided](Mario_Kart_7_PoC/Includes/MK7NetworkBuffer.hpp).
-
-## ENLBufferPwn in Mario Kart 8 (Wii U)
-The following video showcases a severe case of the vulnerability in Mario Kart 8 for the Wii U, where code that prints a custom message is executed remotely on a Wii U console (in the background) by making it connect to a simulated player via a PC utility (bottom right corner). The only interaction done by the user is joining an online game session with the attacker, in this case, using the "friends" feature (note that a "friend room" was used to safely test the vulnerability in an isolated manner and not affect any other users playing in public lobbies). Remote code execution is achieved the same way as in Mario Kart 7: A ROP payload is sent to the remote console and then executed by overwriting the stack. While this video doesn't showcase full console takeover, it is possible to combine the ROP payload with other vulnerabilities to achieve it.
-
-[![ENLBufferPwn - Mario Kart 8 Demonstration - Youtube](https://img.youtube.com/vi/6Z7jSUimmuc/0.jpg)](https://www.youtube.com/watch?v=6Z7jSUimmuc)
 
 ### Technical details
 
