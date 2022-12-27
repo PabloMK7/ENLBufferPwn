@@ -19,7 +19,7 @@
 </tr>
 <tr>
 <td>Reported:</td>
-<td>August 8th, 2021 (Mario Kart 7) <br> April 14th, 2022 (Mario Kart 8)  </td>
+<td>August 8th, 2021 (Mario Kart 7) <br> April 14th, 2022 (Mario Kart 8 Deluxe)  </td>
 </tr>
 <tr>
 <td>Disclosed:</td>
