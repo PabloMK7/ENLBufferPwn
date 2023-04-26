@@ -32,8 +32,6 @@
 * [Vulnerability details](#vulnerability-details)
 * [ENLBufferPwn in Mario Kart 7 (3DS)](#enlbufferpwn-in-mario-kart-7-3ds)
   + [Technical details](#technical-details)
-* [ENLBufferPwn in Mario Kart 8 (Wii U)](#enlbufferpwn-in-mario-kart-8-wii-u)
-  + [Technical details](#technical-details-1)
 * [Credits](#credits)
 * [License](#license)
 
@@ -99,11 +97,11 @@ As you can see, neither `Set` nor `Add` check that the incoming `newDataSize` fi
 
 Another detail of the network library is that it is asynchronous, so that games can be doing other operations while data is being filled up into the buffer. In order to accomplish this, a double buffer technique is used. This way, the game can access already received data in a `NetworkBuffer` at the same time as new data is being received. After the second `NetworkBuffer` is filled, the buffers are swapped and the cycle repeats.
 
-For this PoC, we will be exploiting the double `NetworkBuffer` used to receive Mii data (`bufferType = 9`). Due to the order of heap allocation, it just happens that the `NetworkBuffer` object and its contents are placed next to each other. Also, both buffers from the double buffer are contigous in memory. The following diagram represents how the memory looks after the buffer allocation:
+For this PoC, the double `NetworkBuffer` used to receive Mii data (`bufferType = 9`) will be exploited . Due to the order of heap allocation, it just happens that the `NetworkBuffer` object and its contents are placed next to each other. Also, both buffers from the double buffer are contigous in memory. The following diagram represents how the memory looks after the buffer allocation:
 
 ![Representation of the mii data double NetworBuffer in the game's heap](images/memory_layout.png)
 
-From now on, the buffer in the top of the image will be references as `Buffer0`, while the buffer in the bottom will be `Buffer1`. Using this knowledge, an attacker can trigger the buffer overflow in `Buffer0` to overwrite the attributes of `Buffer1`, including its `dataPtr` member. Since 3DS games do not implement ASLR, all the memory locations in the remote console are known, so `dataPtr` can be pointed to an arbitrary location. Once the game swaps the buffer, the new data will be copied to the arbitrary location. Doing the following steps, a payload of any size can be copied to the remote console:
+From now on, the buffer in the top of the image will be referenced as `Buffer0`, while the buffer in the bottom will be `Buffer1`. Using this knowledge, an attacker can trigger the buffer overflow in `Buffer0` to overwrite the attributes of `Buffer1`, including its `dataPtr` member. Since 3DS games do not implement ASLR, all the memory locations in the remote console are known, so `dataPtr` can be pointed to an arbitrary location. Once the game swaps the buffer, the new data will be copied to the arbitrary location. Doing the following steps, a payload of any size can be copied to the remote console:
 
 1. Build a specially crafted payload and send it in `Buffer0`. It will trigger an overflow in the remote console overwriting `dataPtr` of `Buffer1`.
 2. Set the contents of `Buffer1` with arbitrary data. It will be copied to the arbitrary address pointed by `dataPtr` of `Buffer1` of the remote console.
@@ -121,16 +119,6 @@ This repository contains a PoC that exploits this vulnerability to perform the f
 Keep in mind that this PoC does not implement any kind of packet drop detection, as communications between consoles are done using UDP. To obtain the best results, packet drop handling should be implemented in the PoC code or the consoles should be placed in the same network to reduce the chances of packets dropping.
 
 A possible fix of the vulnerable `NetworkBuffer` class is [also provided](Mario_Kart_7_PoC/Includes/MK7NetworkBuffer.hpp).
-
-### Technical details
-
-All the details explained in the section [ENLBufferPwn in Mario Kart 7 (3DS)](#enlbufferpwn-in-mario-kart-7-3ds) apply to Mario Kart 8 as well. The only notable difference is the implementation of the `NetworkBuffer` class, which has a few extra attributes. However, none of the differences affect how the vulnerability works.
-
-This repository contains a PoC that exploits this vulnerability to perform the following operations:
-
-- Send a ROP payload that is stored in the remote console stack. Part of the payload is used to overwrite the return address of the function, making the game execute it immediately. The PoC only implements sending payloads of 0x9C bytes.
-
-**NOTE:** The PoC requires an old version of NintendoClients that implements PIA communications
 
 ## Credits
 While this vulnerability was discovered by multiple users independently, many of them decided to keep the vulnerability information private. However, the folowing people are responsible for safely disclosing the vulnerability to Nintendo:
