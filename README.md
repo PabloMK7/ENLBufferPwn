@@ -15,11 +15,11 @@
 </tr>
 <tr>
 <td>Authors:</td>
-<td><a href=https://github.com/PabloMK7>PabloMK7</a>, <a href=https://github.com/Rambo6Glaz>Rambo6Glaz</a>, <a href=https://github.com/fishguy6564>Fishguy6564</a></td>
+<td><a href=https://github.com/PabloMK7>PabloMK7</a>, <a href=https://github.com/EpicUsername12>Rambo6Glaz</a>, <a href=https://github.com/fishguy6564>Fishguy6564</a></td>
 </tr>
 <tr>
 <td>Reported:</td>
-<td>August 8th, 2021 (Mario Kart 7) <br> April 14th, 2022 (Mario Kart 8 Deluxe)  </td>
+<td>August 8th, 2021 (Mario Kart 7) <br> April 14th, 2022 (for the impacted WiiU and Switch games)  </td>
 </tr>
 <tr>
 <td>Disclosed:</td>
@@ -32,6 +32,7 @@
 * [Vulnerability details](#vulnerability-details)
 * [ENLBufferPwn in Mario Kart 7 (3DS)](#enlbufferpwn-in-mario-kart-7-3ds)
   + [Technical details](#technical-details)
+* [ENLBufferPwn in Mario Kart 8](#enlbufferpwn-in-mario-kart-8)
 * [Credits](#credits)
 * [License](#license)
 
@@ -120,10 +121,18 @@ Keep in mind that this PoC does not implement any kind of packet drop detection,
 
 A possible fix of the vulnerable `NetworkBuffer` class is [also provided](Mario_Kart_7_PoC/Includes/MK7NetworkBuffer.hpp).
 
+## ENLBufferPwn in Mario Kart 8
+
+The vulnerability is also present on the WiiU and Switch version of Mario Kart 8, but only demonstrated for the WiiU release of the game.
+
+- The [POC](Mario_Kart_8_WiiU_PoC/exploit.py) requires an old version of [NintendoClients](https://github.com/kinnay/NintendoClients) that implements PIA communications
+- You can refer to this hackerone report for additional information: https://hackerone.com/reports/1541273
+- A more detailed write-up will be added here in the future
+
 ## Credits
 While this vulnerability was discovered by multiple users independently, many of them decided to keep the vulnerability information private. However, the folowing people are responsible for safely disclosing the vulnerability to Nintendo:
 - PabloMK7 ([GitHub](https://github.com/PabloMK7), [Twitter](https://twitter.com/Pablomf6))
-- Rambo6Glaz ([GitHub](https://github.com/Rambo6Glaz))
+- Rambo6Glaz ([GitHub](https://github.com/EpicUsername12))
 - Fishguy6564 ([GitHub](https://github.com/fishguy6564), [Twitter](https://twitter.com/fishguy6564))
 
 ## License
