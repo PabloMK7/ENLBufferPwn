@@ -44,11 +44,11 @@ The vulnerability has scored a [9.8/10 (Critical)](https://www.first.org/cvss/ca
 
 Here is a list of games that are known to have had the vulnerability at some point (all the Switch and 3DS games listed have received updates that patch the vulnerability, so they are no longer affected):
 - Mario Kart 7 (fixed in v1.2)
-- Mario Kart 8
+- Mario Kart 8 (fixed in v4.2.0)
 - Mario Kart 8 Deluxe (fixed in v2.1.0)
 - Animal Crossing: New Horizons (fixed in v2.0.6)
 - ARMS (fixed in v5.4.1)
-- Splatoon
+- Splatoon (fixed in v2.12.1)
 - Splatoon 2 (fixed in v5.5.1)
 - Splatoon 3 (fixed in late 2022, exact version unknown)
 - Super Mario Maker 2 (fixed in v3.0.2)
